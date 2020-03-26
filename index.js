@@ -1,4 +1,4 @@
-const { writeFileSync } = require("fs");
+const { writeFileSync, existsSync, mkdirSync } = require("fs");
 const { extname, resolve, relative } = require("path");
 const { load } = require("parcel-bundler/lib/utils/config");
 
@@ -17,9 +17,9 @@ const entryHTML = (entry, info = {}) => `<!DOCTYPE html>
 </head>
 <body>
   <noscript>
-    We're sorry but ${
-      info.title || info.name || ""
-    } doesn't work properly without JavaScript enabled. Please enable it to continue.
+    We're sorry but ${info.title ||
+      info.name ||
+      ""} doesn't work properly without JavaScript enabled. Please enable it to continue.
   </noscript>
   <div id="app"></div>
   <script src="${entry}"></script>
@@ -34,13 +34,15 @@ module.exports = bundler => {
 
     if (parser !== "./assets/JSAsset") return;
 
-    const config = await load(entry, ['package.json']);
-    const jsPath = relative(bundler.options.cacheDir, entry);
-    const htmlPath = resolve(bundler.options.cacheDir, "index.html");
+    const { cacheDir } = bundler.options;
+    const config = await load(entry, ["package.json"]);
+    const jsPath = relative(cacheDir, entry);
+    const htmlPath = resolve(cacheDir, "index.html");
     const html = entryHTML(jsPath, config);
+    if (!existsSync(cacheDir)) fs.mkdirSync(cacheDir);
     writeFileSync(htmlPath, html);
 
     bundler.entryFiles[index] = htmlPath;
-    bundler.options.rootDir = bundler.options.cacheDir;
+    bundler.options.rootDir = cacheDir;
   });
 };

@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "cd test && yarn && cp ../index.js node_modules/parcel-plugin-entry && rm -r ./dist && yarn parcel build index.js && cat dist/index.html"
+    "test": "cd test && yarn && cp ../index.js node_modules/parcel-plugin-entry && rm -rf ./dist && yarn parcel build index.js && cat dist/index.html"
   },
   "peerDependencies": {
     "parcel-bundler": "^1.9.4"
