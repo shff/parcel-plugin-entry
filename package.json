@@ -1,0 +1,28 @@
+{
+  "license": "MIT",
+  "name": "parcel-plugin-entry",
+  "description": "Automatically adds an index.html file",
+  "author": "Silvio Henrique Ferreira <shferreira@me.com>",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd test && yarn && cp ../index.js node_modules/parcel-plugin-entry && rm -r ./dist && yarn parcel build index.js && cat dist/index.html"
+  },
+  "peerDependencies": {
+    "parcel-bundler": "^1.9.4"
+  },
+  "homepage": "https://github.com/shff/parcel-plugin-entry#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shff/parcel-plugin-entry.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shff/parcel-plugin-entry/issues"
+  },
+  "keywords": [
+    "parcel",
+    "parcel-plugin",
+    "entry-point",
+    "index"
+  ]
+}

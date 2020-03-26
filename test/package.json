@@ -1,0 +1,9 @@
+{
+  "license": "MIT",
+  "title": "Page title",
+  "description": "Page description",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-entry": "../"
+  }
+}
