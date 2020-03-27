@@ -3,7 +3,7 @@
   "name": "parcel-plugin-entry",
   "description": "Automatically adds an index.html file",
   "author": "Silvio Henrique Ferreira <shferreira@me.com>",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "scripts": {
     "test": "cd test && yarn && cp ../index.js node_modules/parcel-plugin-entry && rm -rf ./dist && yarn parcel build index.js && cat dist/index.html"
